@@ -10,7 +10,7 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
   		if(!head || !head->next) return head;  		
-  		ListNode* prev = NULL, *next = head->next;  		
+  		ListNode* prev = NULL, *next = head->next;
   		while(next){
   			head->next = prev;
   			prev = head;
@@ -21,3 +21,11 @@ public:
   		return prev;
     }
 };
+int main()
+{
+  ListNode one(1),two(2),three(3);  
+  one.next = &two;
+  two.next = &three;
+  Solution s;
+  s.reverseList(&one);
+}
