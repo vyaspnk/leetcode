@@ -54,22 +54,4 @@ public:
         return head;
     }
 };
-void printList(ListNode *head){
-    while(head) { cout << head->val <<" "; head = head->next; }
-    cout << endl;
-}
-int main(){
-    ListNode test[6] = {
-        {3,&test[1]},
-        {1,&test[2]},
-        {6,&test[3]},
-        {4,&test[4]},
-        {2,&test[5]},
-        {5,NULL}
-    };
-    Solution S;
-    ListNode *head = &test[0];
-    printList(head);
-    head = S.InsertionSortList(&test[0]);
-    printList(head);
-}
+		
