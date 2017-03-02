@@ -12,8 +12,8 @@
 #include <unordered_map>
 using namespace std;
 //Boyer-Moore Voting Algorithm for 1,2,3. k elements whose frequency exceeds N/(k+1)
-//eg: Majority Element: K = 1; find element which repeats more than 1/2 the list.
-//eg: Majority 2 Elements: K=2; find 2 elements which repeat more than 1/3 list.
+//eg: Majority Element: if K = 1; implies find 1 element which repeats more than 1/2 the list.
+//eg: Majority 2 Elements: if K=2; implies find 2 elements which repeat more than 1/3 list.
 //
 //O(n) time and O(1) space complexity
 

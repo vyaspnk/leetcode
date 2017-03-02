@@ -7,8 +7,10 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-
-class Solution {
+#include "BinaryTree.hpp"
+#include <iostream>
+using namespace std;
+class AMD {
 private:
     void buildInOrder(TreeNode *root, vector<int> &order) {
         if(!root)
@@ -26,7 +28,7 @@ public:
         buildInOrder(root, order);
         int adiff = INT_MAX;
         for(auto i = 0;i < order.size()-1; i++) {
-            cout << order[i] << " ";
+//            cout << order[i] << " ";
             auto delta = abs(order[i]-order[i+1]);
             if(delta < adiff)
                 adiff = delta;

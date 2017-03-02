@@ -42,6 +42,7 @@ public:
     vector<int> findMode(TreeNode* root);
     TreeNode *LCA(TreeNode*,TreeNode*,TreeNode*);
     int maxPathSum(TreeNode *root);
-        
+    TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p);
+
 };
 #endif /* BinaryTree_h */

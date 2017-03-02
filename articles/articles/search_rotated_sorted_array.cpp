@@ -9,56 +9,42 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-bool binaryS(int A[],int N, int val) { // binary seach in A
-    int b = 0;
-    int e = N-1;
-    if(A[b] == val || A[e]==val)
-        return true;
-    if(val <  A[b] || val > A[e])
-        return false;
-    int m = (e-b)/2;
-    while(m >= b) {
-        if(val == A[m])
-            return true;
-        if(val > A[m]) {
-            b = m;
-        } else {
-            e = m;
-        }
-        m = m + (e-b)/2;
-    }
-    return false;
-}
-bool
-search_rotated_sorted_array(int A[], int N, int val) {
+/**
+ * @brief - Iterative Binary Search implementation. Returns  *
+ * the index of target if found, else returns -1             *
+ * Time Complexity = O(lg n).   Space Complexity = O(1)      */
+int binarySearch(vector<int>& nums, int first, int last, int target) {
+    if(first < 0 || first > last) return -1;
     
-    int b = 0;
-    int e = N-1;
-    if(A[b] < A[e]) { // not rotated
-        return binaryS(&A[b],e-b+1,val);
+    for(int mid; first <= last; ) {
+        mid = first + (last - first) / 2;
+        if(nums[mid] < target)          first = mid + 1;
+        else if(nums[mid] > target)     last = mid - 1;
+        else                            return mid;
     }
-    if( e-b == 1) {
-        return (A[b]==val||A[e]==val);
-    };
-    
-    int m = (e - b)/2;
-    while(m>b) {
-        if( val == A[m])
-            return true;
-        //find the minimum element.
-        if(A[b] > A[m]) {
-            e = m;
-            m = b+(e-b)/2;
-        } else {
-            if(val > A[m]) {
-                return binaryS(&A[m], N-m, val);
-            }else {
-                return binaryS(&A[b], m-b, val);
-            }
-        }
-	}
-    return false;
+    return -1;
 }
+
+int search(vector<int>& nums, int target) {
+    if(nums.size() == 0)  return 0;
+    int m = 0;
+    /* If input is rotated, find index of smallest element    *
+     * with Binary Search                                     */
+    for(int b = 0, e = nums.size() - 1; b <= e && nums[b] > nums[e]; ) {
+        /* If len is even, mid needs to be higher element      */
+        m = b + (e - b) / 2;
+        if((e-b+1) % 2 == 0)   m++;
+        if(nums[m] > nums[b])  b = m;  /* Is [b, m] not-rotated*/
+        else                   e = m-1;/* Is [m, e] not-rotated*/
+    }
+    int pivot = m;
+    //cout << endl << "smallest @ " << pivot << endl;
+    int ret = binarySearch(nums, 0, pivot-1, target);
+    if(ret == -1)  ret = binarySearch(nums, pivot, nums.size()-1, target);
+    
+    return ret;
+}
+
 
 int main(){
     int A[6] = {5,6,1,2,3,4};

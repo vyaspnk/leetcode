@@ -39,11 +39,13 @@ UndirectedGraphNode *
 cloneGraph(UndirectedGraphNode *node ) {
     unordered_map<int, pair<UndirectedGraphNode*, vector<UndirectedGraphNode*>>> G;
     auto root = cloneNode(node,G);
-    cout << "Graph Size = " << G.size() << endl;
+    if(!root)
+        return nullptr;
+//    cout << "Graph Size = " << G.size() << endl;
     for( auto e : G ){ //process each new node
         cout << e.first << " - ";
-        for(auto t = e.second.second.begin(); t!=e.second.second.end();t++) { //clone each neighbor in the node
-            cout << (*t)->label << " ";
+        for(auto t = e.second.second.begin(); t!=e.second.second.end();t++) { //clone each neighbor in the old node for new node
+//            cout << (*t)->label << " ";
             *t = G[(*t)->label].first;
         }
         cout << endl;
