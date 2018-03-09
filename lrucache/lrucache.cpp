@@ -12,18 +12,10 @@
 using namespace std;
 using namespace cache;
 
-class LRUCache {
-    int capacity;
-    typedef typename std::pair<int, int> CachePair;
-    std::list<CachePair> Cache;
-    typedef typename std::list<CachePair>::iterator list_iterator_t;
-    unordered_map<int, list_iterator_t> LRUMap;
-public:
-    LRUCache(int val): capacity(val)  {
-        
-    }
+
     
-    int get(int input) {
+    int 
+    lrucache::get(int input) {
         int ret=-1;
         auto keymap = keymapper.find(input);
         if(keymap == keymapper.end()) {
@@ -35,7 +27,8 @@ public:
         }
     }
 
-    void set(int input) {
+    void 
+    lrucache::set(int input) {
         auto kt = keymapper.find(input);
         valueset.push_front(input);
 
@@ -53,13 +46,7 @@ public:
         }
     }
 
-    bool exists(int input) {
+    bool 
+    lrucache::exists(int input) {
         return (keymapper.find(input)==keymapper.end())?false:true;
     }
-}
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
