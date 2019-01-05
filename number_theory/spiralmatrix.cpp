@@ -17,7 +17,7 @@ using namespace std;
 
 
 vector<int> V= {1,2,3,4,5};
-vector<vector<int>> M = {V,V};
+vector<vector<int>> M = {V,V,V,V,V};
 
 void print_spiral(vector<vector<int>> mat, int m, int n, int k ) {
     if (m <= 0 || n <= 0)
@@ -52,5 +52,5 @@ void print_spiral_helper(vector<vector<int>> mat, int m, int n) {
     print_spiral(mat, m, n, 0);
 }
 int main() {
-    print_spiral_helper(M, M[0].size(), M.size());
+    print_spiral_helper(M, (int)(M[0].size()), (int)(M.size()));
 }
